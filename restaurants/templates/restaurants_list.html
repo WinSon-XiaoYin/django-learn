@@ -9,7 +9,7 @@
         th { text-align: center; }
         div.menus {
             text-align: center;
-            padding: 40px 15px;
+            padding: 50px 20px;
         }
     </style>
 </head>
@@ -31,9 +31,8 @@
     <div class="container">
     <div class="menus">
         <h2>餐厅列表</h2>
-        <table>
+        <table align="center" width="920px;">
             <tr>
-                <th>选取</th>
                 <th>店名</th>
                 <th>电话</th>
                 <th>地址</th>
@@ -41,7 +40,7 @@
             </tr>
             {% for r in restaurants %}
                 <tr>
-                    <td> <input type="radio" name="id"> </td>
+{#                    <td> <input type="radio" name="id"> </td>#}
                     <td> <a href="/restaurants/menu/{{ r.id }}">{{ r.name }}</a> </td>
                     <td> {{ r.phone_number }} </td>
                     <td> {{ r.address }} </td>

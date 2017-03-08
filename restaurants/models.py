@@ -39,6 +39,9 @@ class Comment(models.Model):
     date_time = models.DateTimeField()
     restaurant = models.ForeignKey(Restaurant)
 
+    def __unicode__(self):
+        return self.content
+
     class Meta:
         verbose_name = u'评论'
         verbose_name_plural = u'评论'

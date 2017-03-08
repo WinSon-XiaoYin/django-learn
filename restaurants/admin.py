@@ -13,6 +13,11 @@ class FoodAdmin(admin.ModelAdmin):
     fields = ('price', 'restaurant')
     ordering = ('-price',)
 
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('content', 'visitor', 'email', 'date_time', 'restaurant')
+    ordering = ('-date_time', )
+
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(Food, FoodAdmin)
-admin.site.register(Comment)
+admin.site.register(Comment, CommentAdmin)
