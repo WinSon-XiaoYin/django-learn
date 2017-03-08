@@ -5,11 +5,6 @@ from django.contrib import auth
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm
 
-def welcome(request):
-    if 'user_name' in request.GET and request.GET['user_name'] != '':
-        return HttpResponse('Welcome!~'+request.GET['user_name'])
-    else:
-        return render_to_response('welcome.html', locals())
 
 def login(request):
     if request.user.is_authenticated():
@@ -23,7 +18,7 @@ def login(request):
         auth.login(request, user)
         return HttpResponseRedirect('/index/')
     else:
-        return render_to_response('login.html', RequestContext(request, locals()))
+        return render_to_response('./registration/login.html', RequestContext(request, locals()))
 
 def index(request):
     return render_to_response('index.html', RequestContext(request, locals()))

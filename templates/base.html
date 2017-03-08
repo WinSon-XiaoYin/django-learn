@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Login </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">#}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <style>
         th { text-align: center; }
@@ -29,17 +29,7 @@
         </div>
     </nav>
     <br /><br />
-    <div class="container" align="center">
-        <div class="menus">
-            <form action="" method="post">{% csrf_token %}
-                <label for="username">用户名称：</label>
-                <input type="text" name="username" value="{{ username }}" id="username"> <br />
-                <label for="password">用户密码：</label>
-                <input type="password" name="password" value="" id="password"> <br />
-                <input type="submit" value="登入">
-            </form>
-        </div>
-    </div>
+    {% block content %}{% endblock %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>

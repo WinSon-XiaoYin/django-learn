@@ -12,19 +12,9 @@ def menu(request, id):
     restaurant = Restaurant.objects.get(id=id)
     return render_to_response('menu.html', locals())
 
-def meta(request):
-    values = request.META.items()
-    values.sort()
-    html = []
-    for k, v in values:
-        html.append('<tr><td>{0}</td><td>{1}</td></tr>'.format(k, v))
-    return HttpResponse('<table>{0}</table>'.format('\n'.join(html)))
-
 
 @login_required
 def list_restaurants(request):
-    # if not request.user.is_authenticated():
-    #     return HttpResponseRedirect('/accounts/login/?next={0}'.format(request.path))
     restaurants = Restaurant.objects.all()
     return render_to_response('restaurants_list.html', RequestContext(request, locals()))
 
@@ -52,23 +42,3 @@ def comment(request, id):
     else:
         f = CommentForm(initial={'content': '我没意见'})
     return render_to_response('comments.html', RequestContext(request, locals()))
-
-
-def set_c(request):
-    response = HttpResponse('Set your lucky_number as 8')
-    response.set_cookie('lucky_number', 8)
-    return response
-
-def get_c(request):
-    if 'lucky_number' in request.COOKIES:
-        return HttpResponse('Your lucky_number is {0}'.format(request.COOKIES['lucky_number']))
-    else:
-        return HttpResponse('No cookies.')
-
-
-def session_test(request):
-    sid = request.COOKIES['sessionid']
-    sid2 = request.session.session_key
-    s = Session.objects.get(pk=sid)
-    s_info = 'Session ID:' + sid + '<br>SessionID2:' + sid2 + '<br>Expire_date:' + str(s.expire_date) + '<br>Data:' + str(s.get_decoded())
-    return HttpResponse(s_info)
