@@ -42,10 +42,10 @@
             {% for r in restaurants %}
                 <tr>
                     <td> <input type="radio" name="id"> </td>
-                    <td> {{ r.name }} </td>
+                    <td> <a href="/restaurants/menu/{{ r.id }}">{{ r.name }}</a> </td>
                     <td> {{ r.phone_number }} </td>
                     <td> {{ r.address }} </td>
-                    <td> <a href="/comment/{{ r.id }}"> 评论 </a> </td>
+                    <td> <a href="/restaurants/comment/{{ r.id }}"> 评论 </a> </td>
                 </tr>
             {% endfor %}
         </table>

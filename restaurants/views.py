@@ -8,8 +8,8 @@ from restaurants.forms import CommentForm
 from django.contrib.sessions.models import Session
 from django.contrib.auth.decorators import login_required
 
-def menu(request):
-    restaurant = Restaurant.objects.get(id=2)
+def menu(request, id):
+    restaurant = Restaurant.objects.get(id=id)
     return render_to_response('menu.html', locals())
 
 def meta(request):
