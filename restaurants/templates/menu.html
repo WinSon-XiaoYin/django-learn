@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+    Menu
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="menus">
+            <h2> {{ restaurant.name }} </h2>
+            {% if restaurant.food_set.all %}
+            <p>本餐厅共有{{ restaurant.food_set.all|length }}道菜</p>
+            <table class="table">
+                <tr>
+                    <th>菜名</th>
+                    <th>价格</th>
+                    <th>辣不辣</th>
+                    <th>注解</th>
+                </tr>
+                {% for food in restaurant.food_set.all %}
+                    <tr>
+                        <td> {{ food.name }} </td>
+                        <td> {{ food.price }} </td>
+                        <td> {% if food.is_spicy %} 辣 {% else %}
+                        不辣 {% endif %} </td>
+                        <td> {{ food.comment }} </td>
+                    </tr>
+                    {% endfor %}
+            </table>
+            {% else %}
+            <p>本餐厅啥也没卖</p>
+            {% endif %}
+        </div>
+    </div>
+ {% endblock %}

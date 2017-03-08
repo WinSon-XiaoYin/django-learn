@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Restaurants
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="menus">
+        <h2>餐厅列表</h2>
+        <table align="center" width="920px;">
+            <tr>
+                <th>店名</th>
+                <th>电话</th>
+                <th>地址</th>
+                <th>评论</th>
+            </tr>
+            {% for r in restaurants %}
+                <tr>
+{#                    <td> <input type="radio" name="id"> </td>#}
+                    <td> <a href="/restaurants/menu/{{ r.id }}">{{ r.name }}</a> </td>
+                    <td> {{ r.phone_number }} </td>
+                    <td> {{ r.address }} </td>
+                    <td> <a href="/restaurants/comment/{{ r.id }}"> 评论 </a> </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+{% endblock %}

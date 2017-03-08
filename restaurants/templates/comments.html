@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}
+    Comments
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="menus">
+            <div class="col-md-4">
+                <h2>{{ r.name }}的评论</h2>
+                {% if r.comment_set.all %}
+                    <p>目前共有{{ r.comment_set.all|length }}条评论</p>
+                    <table align="center">
+                        <tr>
+                            <th>留言者</th>
+                            <th>时间</th>
+                            <th>评论</th>
+                        </tr>
+                    {% for c in r.comment_set.all %}
+                        <tr>
+                            <td> {{ c.visitor }} </td>
+                            <td> {{ c.date_time | date:"F j, Y" }} </td>
+                            <td> {{ c.content }} </td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                {% else %}
+                    <p>无评论</p>
+                {% endif %}
+
+                <br /><br />
+                {% if f.errors %}
+                    <p style="color:red">
+                        请根据提示重新填写表单
+                    </p>
+                {% endif %}
+            </div>
+
+        <br />
+            <div class="col-md-6">
+                <form action="" method="post">
+{#                    {% csrf_token %}#}
+                    <table align="center">
+    {#                    {{ f.as_table }}#}
+                        <tr>
+                            <td> <label for="visitor">留言者：</label> </td>
+                            <td> <input id="visitor" type="text" name="visitor" value="{{ visitor }}"> </td>
+                        </tr>
+                        <tr>
+                            <td> <label for="email">电子信箱：</label> </td>
+                            <td> <input id="email" type="text" name="email" value="{{ email }}"> </td>
+                        </tr>
+                        <tr>
+                            <td> <label for="content">评论：</label> </td>
+                            <td>
+                                <textarea id="content" rows="10" cols="48" name="content">{{ content }}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="给予评论">
+                </form>
+            </div>
+        </div>
+    </div>
+ {% endblock %}

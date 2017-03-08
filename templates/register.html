@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <div class="container" align="center">
+        <div class="menus">
+            <h1 align="left">注册新账号</h1> <br />
+            <form action="" method="POST" align="left"> {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="注册">
+            </form>
+        </div>
+    </div>
+{% endblock %}
