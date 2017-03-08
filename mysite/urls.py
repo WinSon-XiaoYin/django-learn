@@ -16,12 +16,20 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from views import index, register, login, logout
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^ueditor/', include('DjangoUeditor.urls')),
     url(r'^restaurants/', include('restaurants.urls')),
     url(r'^$|^index/$', index),
     url(r'^accounts/login/$', login),
     url(r'^accounts/logout/$', logout),
     url(r'^accounts/register/$', register),
 ]
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )

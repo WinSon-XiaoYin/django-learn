@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from DjangoUeditor.models import UEditorField
 # Create your models here.
 
 class Restaurant(models.Model):
@@ -33,14 +33,16 @@ class Food(models.Model):
         ordering = ['price']
 
 class Comment(models.Model):
-    content = models.CharField(max_length=255)
+    content = UEditorField('评论内容', height=300, width=1000,
+                           default=u'', blank=True, imagePath="uploads/images/",
+                           toolbars='besttome', filePath='uploads/files/')
     visitor = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     date_time = models.DateTimeField()
     restaurant = models.ForeignKey(Restaurant)
 
     def __unicode__(self):
-        return self.content
+        return self.visitor
 
     class Meta:
         verbose_name = u'评论'

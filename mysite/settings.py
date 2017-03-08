@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'restaurants',
+    'DjangoUeditor',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,12 @@ STATIC_URL = '/static/'
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers' + '.PickleSerializer'
 LOGIN_REDIRECT_URL = '/index/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "common_static"),
+)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
