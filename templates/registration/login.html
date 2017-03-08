@@ -7,7 +7,7 @@
 {% block content %}
     <div class="container" align="center">
         <div class="menus">
-            <form action="" method="post">{% csrf_token %}
+            <form action="" method="post"> {% csrf_token %}
                 <label for="username">用户名称：</label>
                 <input type="text" name="username" value="{{ username }}" id="username"> <br />
                 <label for="password">用户密码：</label>

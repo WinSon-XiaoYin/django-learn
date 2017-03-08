@@ -21,6 +21,7 @@ def list_restaurants(request):
 def comment(request, id):
     if id:
         r = Restaurant.objects.get(id=id)
+        user = request.user
     else:
         return HttpResponseRedirect('/restaurants_list')
     if request.POST:
