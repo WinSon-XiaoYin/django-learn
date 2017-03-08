@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Restaurants </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <style>
+        th { text-align: center; }
+        div.menus {
+            text-align: center;
+            padding: 40px 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">MySite</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+    <div class="menus">
+        <h2>餐厅列表</h2>
+        <table>
+            <tr>
+                <th>选取</th>
+                <th>店名</th>
+                <th>电话</th>
+                <th>地址</th>
+                <th>评论</th>
+            </tr>
+            {% for r in restaurants %}
+                <tr>
+                    <td> <input type="radio" name="id"> </td>
+                    <td> {{ r.name }} </td>
+                    <td> {{ r.phone_number }} </td>
+                    <td> {{ r.address }} </td>
+                    <td> <a href="/comment/{{ r.id }}"> 评论 </a> </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Menu </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <style>
+        th { text-align: center; }
+        div.menus {
+            text-align: center;
+            padding: 40px 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">MySite</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="menus">
+            <h2> {{ restaurant.name }} </h2>
+            {% if restaurant.food_set.all %}
+            <p>本餐厅共有{{ restaurant.food_set.all|length }}道菜</p>
+            <table class="table">
+                <tr>
+                    <th>菜名</th>
+                    <th>价格</th>
+                    <th>辣不辣</th>
+                    <th>注解</th>
+                </tr>
+                {% for food in restaurant.food_set.all %}
+                    <tr>
+                        <td> {{ food.name }} </td>
+                        <td> {{ food.price }} </td>
+                        <td> {% if food.is_spicy %} 辣 {% else %}
+                        不辣 {% endif %} </td>
+                        <td> {{ food.comment }} </td>
+                    </tr>
+                    {% endfor %}
+            </table>
+            {% else %}
+            <p>本餐厅啥也没卖</p>
+            {% endif %}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
